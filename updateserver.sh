@@ -12,15 +12,17 @@ CACHEDIR=".mcsupcache/"
 
 # Define the download and extract function.
 download() {
-  echo "Doesn't do anything yet!"
-  #wget http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/trunk/MCServer.tar
-  #pid=`pgrep -o -x MCServer`
-  #kill -s 15 $pid
-  #tar --extract --file=MCServer.tar MCServer/MCServer
-  #/bin/cp MCServer/MCServer mcserver/
-  #rm -r -f MCServer.tar MCServer
-  #cd mcserver/
-  #screen ./MCServer
+  # Download the current archive.
+  wget $ARCHLOC"MCServer.tar" -O $CACHEDIR"MCServer.tar"
+  # Find out the current MCServer process and kill it.
+  pid=`pgrep -o -x MCServer`
+  kill -s 15 $pid
+  # Extract the archive, clean up, and start the server.
+  tar -xf $CACHEDIR"MCServer.tar" MCServer/MCServer -C $CACHEDIR
+  cp $CAHCEDIR"MCServer/MCServer" $MCSDIR
+  rm -r $CACHEDIR"MCServer"
+  cd $MCSDIR
+  screen ./MCServer
 }
 
 # Work out the current architecture and store it.
