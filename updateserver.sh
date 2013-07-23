@@ -13,16 +13,21 @@ CACHEDIR=".mcsupcache/"
 # Define the download and extract function.
 download() {
   # Download the current archive.
-  wget $ARCHLOC"MCServer.tar" -O $CACHEDIR"MCServer.tar"
+  echo "Downloading MCServer"
+  wget --quiet $ARCHLOC"MCServer.tar" -O $CACHEDIR"MCServer.tar"
   # Find out the current MCServer process and kill it.
   pid=`pgrep -o -x MCServer`
   kill -s 15 $pid
   # Extract the archive, clean up, and start the server.
-  tar -xf $CACHEDIR"MCServer.tar" MCServer/MCServer -C $CACHEDIR
+  echo "Extracting downloaded archive."
+  tar -xf $CACHEDIR"MCServer.tar" MCServer/MCServer
   cp $CAHCEDIR"MCServer/MCServer" $MCSDIR
-  rm -r $CACHEDIR"MCServer"
+  rm -r "MCServer"
   cd $MCSDIR
   screen ./MCServer
+  # Nothing more is needed from the script, exit.
+  echo "Updated successfully."
+  exit
 }
 
 # Work out the current architecture and store it.
@@ -49,9 +54,13 @@ then
 fi
 
 # Donwload the MD5 sum from the buildserver and check it against the current tar.
-wget $ARCHLOC"MCServer.tar.md5" -O $CACHEDIR"MCServer.tar.md5"
-if [ ! md5sum $CACHEDIR"MCServer.tar.md5" ]
+wget --quiet $ARCHLOC"MCServer.tar.md5" -O $CACHEDIR"MCServer.tar.md5"
+cd $CACHEDIR
+md5sum -c --status "MCServer.tar.md5"
+rc=$?
+if [ $rc != 0 ]
 then
+  cd ..
   # We don't have the most updated MCServer version, update now.
   download
 fi
