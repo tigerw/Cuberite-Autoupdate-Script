@@ -46,6 +46,13 @@ else
   exit
 fi
 
+# Make sure the specified MCServer directory exists.
+if [ ! -d $MCSDIR ]
+then
+  # Make the directory.
+  mkdir $MCSDIR
+fi
+
 # Check if the cache directory exists.
 if [ ! -d $CACHEDIR ]
 then
