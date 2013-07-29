@@ -2,9 +2,9 @@
 
 #Configuration
 ## Download locations for different architectures.
-X86LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/trunk/"
-X64LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/trunk/"
-ARMLOC="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/trunk/"
+X86LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
+X64LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
+ARMLOC="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/MCServer.tar"
 ## MCServer Directory
 MCSDIR="mcserver/"
 ## Cache Directory
