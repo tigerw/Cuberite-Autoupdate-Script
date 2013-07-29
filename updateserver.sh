@@ -5,6 +5,9 @@
 X86LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
 X64LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
 ARMLOC="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/MCServer.tar"
+X86LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X64LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+ARMLOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/MCServer.tar.md5"
 ## MCServer Directory
 MCSDIR="mcserver/"
 ## Cache Directory
@@ -14,7 +17,7 @@ CACHEDIR=".mcsupcache/"
 download() {
   # Download the current archive.
   echo "Downloading MCServer"
-  wget --quiet $ARCHLOC"MCServer.tar" -O $CACHEDIR"MCServer.tar"
+  wget --quiet $ARCHLOC -O $CACHEDIR"MCServer.tar"
   # Find out the current MCServer process and kill it.
   pid=`pgrep -o -x MCServer`
   kill -s 15 $pid
@@ -41,12 +44,15 @@ CURRENTARCH=`uname -m`
 if [ $CURRENTARCH == "i686" ]
 then
   ARCHLOC=$X86LOC
+  ARCHLOCMD5=$X86LOCMD5
 elif [ $CURRENTARCH == "x86_64" ]
 then
   ARCHLOC=$X64LOC
+  ARCHLOCMD5=$X64LOCMD5
 elif [ $CURRENTARCH == "armv6l"  ]
 then
   ARCHLOC=$ARMLOC
+  ARCHLOCMD5=$ARMLOCMD5
 else
   echo "Arch not recognised. Please file a bug report with the output from uname -m and your machine type."
   exit
@@ -67,7 +73,7 @@ then
 fi
 
 # Donwload the MD5 sum from the buildserver and check it against the current tar.
-wget --quiet $ARCHLOC"MCServer.tar.md5" -O $CACHEDIR"MCServer.tar.md5"
+wget --quiet $ARCHLOCMD5 -O $CACHEDIR"MCServer.tar.md5"
 cd $CACHEDIR
 md5sum -c --status "MCServer.tar.md5"
 rc=$?
