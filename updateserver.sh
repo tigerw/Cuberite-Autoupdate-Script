@@ -23,7 +23,7 @@ download() {
   kill -s 15 $pid
   # Extract the archive, clean up, and start the server.
   echo "Extracting downloaded archive."
-  tar -xf $CACHEDIR"MCServer.tar" MCServer/MCServer
+  tar -xf $CACHEDIR"MCServer.tar"
   echo "Copying new files."
   cp $CAHCEDIR"Plugins" $MCSDIR
   cp $CAHCEDIR"monsters.ini" $MCSDIR
