@@ -21,6 +21,12 @@ download() {
   # Extract the archive, clean up, and start the server.
   echo "Extracting downloaded archive."
   tar -xf $CACHEDIR"MCServer.tar" MCServer/MCServer
+  echo "Copying new files."
+  cp $CAHCEDIR"Plugins" $MCSDIR
+  cp $CAHCEDIR"monsters.ini" $MCSDIR
+  cp $CAHCEDIR"items.ini" $MCSDIR
+  cp $CAHCEDIR"crafting.txt" $MCSDIR
+  cp $CAHCEDIR"furnace.txt" $MCSDIR
   cp $CAHCEDIR"MCServer/MCServer" $MCSDIR
   rm -r "MCServer"
   cd $MCSDIR
