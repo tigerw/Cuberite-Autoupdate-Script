@@ -19,6 +19,6 @@ Setup
 
 You can either just download it:
 
-    wget https://github.com/tigerw/MCServer-Autoupdate-Script/raw/master/updateserver.sh; ./updateserver.sh
+    wget https://github.com/tigerw/MCServer-Autoupdate-Script/raw/master/updateserver.sh; bash updateserver.sh
  
 Or you can clone the repo, then run the script.
