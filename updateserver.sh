@@ -25,11 +25,11 @@ download() {
   echo "Extracting downloaded archive."
   tar -xf $CACHEDIR"MCServer.tar"
   echo "Copying new files."
-  cp $CAHCEDIR"Plugins" $MCSDIR
-  cp $CAHCEDIR"monsters.ini" $MCSDIR
-  cp $CAHCEDIR"items.ini" $MCSDIR
-  cp $CAHCEDIR"crafting.txt" $MCSDIR
-  cp $CAHCEDIR"furnace.txt" $MCSDIR
+  cp $CAHCEDIR"MCServer/Plugins" $MCSDIR
+  cp $CAHCEDIR"MCServer/monsters.ini" $MCSDIR
+  cp $CAHCEDIR"MCServer/items.ini" $MCSDIR
+  cp $CAHCEDIR"MCServer/crafting.txt" $MCSDIR
+  cp $CAHCEDIR"MCServer/furnace.txt" $MCSDIR
   cp $CAHCEDIR"MCServer/MCServer" $MCSDIR
   rm -r "MCServer"
   cd $MCSDIR
