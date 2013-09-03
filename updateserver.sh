@@ -16,16 +16,17 @@ CACHEDIR=".mcsupcache/"
 # Define the download and extract function.
 download() {
   # Download the current archive.
-  echo "Downloading MCServer"
+  echo "Downloading MCServer..."
   wget --quiet $ARCHLOC -O $CACHEDIR"MCServer.tar"
   # Find out the current MCServer process and kill it.
   pid=`pgrep -o -x MCServer`
   kill -s 15 $pid
   # Extract the archive, clean up, and start the server.
-  echo "Extracting downloaded archive."
+  echo "Extracting downloaded archive..."
   tar -xf $CACHEDIR"MCServer.tar"
-  echo "Copying new files."
+  echo "Copying new files..."
   cp -r $CAHCEDIR"MCServer/Plugins" $MCSDIR
+  cp -r $CACHEDIR"MCServer/Plugins" $MCSDIR
   cp $CAHCEDIR"MCServer/monsters.ini" $MCSDIR
   cp $CAHCEDIR"MCServer/items.ini" $MCSDIR
   cp $CAHCEDIR"MCServer/crafting.txt" $MCSDIR
@@ -35,7 +36,7 @@ download() {
   cd $MCSDIR
   screen ./MCServer
   # Nothing more is needed from the script, exit.
-  echo "Updated successfully."
+  echo "Updated successfully!"
   exit
 }
 
