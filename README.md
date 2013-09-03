@@ -2,6 +2,7 @@ MCServer Automatic Updating Shell Script
 ==========================
 
 **WARNING:** I am not responsible if this script manages to lose you your world (though highly unlikely). Please test first!
+
 **INFORMATION:** This script assumes your MCServer is in a directory named 'mcserver' and that you are currently *outside* that directory.
 
 This script works in tandem with [MCServer](http://mc-server.org/) to update the binary executable to the newest version.
