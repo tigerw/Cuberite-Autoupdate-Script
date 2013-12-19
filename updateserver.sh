@@ -2,12 +2,12 @@
 
 #Configuration
 ## Download locations for different architectures.
-X86LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
-X64LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
-ARMLOC="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/MCServer.tar"
-X86LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-X64LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-ARMLOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-ARM/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X86LOC="http://ci.bearbin.net/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
+X64LOC="http://ci.bearbin.net/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
+ARMLOC="http://ci.bearbin.net/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar"
+X86LOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X64LOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+ARMLOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar.md5"
 ## MCServer Directory
 MCSDIR="mcserver/"
 ## Cache Directory
