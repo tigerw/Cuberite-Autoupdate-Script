@@ -2,12 +2,12 @@
 
 #Configuration
 ## Download locations for different architectures.
-X86LOC="http://ci.bearbin.net/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
-X64LOC="http://ci.bearbin.net/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
-ARMLOC="http://ci.bearbin.net/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar"
-X86LOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-X64LOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-ARMLOCMD5="http://ci.bearbin.net/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X86LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar"
+X64LOC="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar"
+ARMLOC="http://ci.berboe.co.uk/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar"
+X86LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X64LOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-x86-64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+ARMLOCMD5="http://ci.berboe.co.uk/job/MCServer%20Linux-RasPi/lastSuccessfulBuild/artifact/MCServer.tar.md5"
 ## MCServer Directory
 MCSDIR="mcserver/"
 ## Cache Directory
@@ -20,18 +20,18 @@ download() {
   wget --quiet $ARCHLOC -O $CACHEDIR"MCServer.tar"
   # Find out the current MCServer process and kill it.
   pid=`pgrep -o -x MCServer`
-  kill -s 15 $pid
+  kill -s 15 $pid 2>/dev/null
   # Extract the archive, clean up, and start the server.
   echo "Extracting downloaded archive..."
   tar -xf $CACHEDIR"MCServer.tar"
   echo "Copying new files..."
-  cp -r $CAHCEDIR"MCServer/Plugins" $MCSDIR
-  cp -r $CACHEDIR"MCServer/webadmin" $MCSDIR
-  cp $CAHCEDIR"MCServer/monsters.ini" $MCSDIR
-  cp $CAHCEDIR"MCServer/items.ini" $MCSDIR
-  cp $CAHCEDIR"MCServer/crafting.txt" $MCSDIR
-  cp $CAHCEDIR"MCServer/furnace.txt" $MCSDIR
-  cp $CAHCEDIR"MCServer/MCServer" $MCSDIR
+  cp -r "MCServer/Plugins" $MCSDIR
+  cp -r "MCServer/webadmin" $MCSDIR
+  cp "MCServer/monsters.ini" $MCSDIR
+  cp "MCServer/items.ini" $MCSDIR
+  cp "MCServer/crafting.txt" $MCSDIR
+  cp "MCServer/furnace.txt" $MCSDIR
+  cp "MCServer/MCServer" $MCSDIR
   rm -r "MCServer"
   cd $MCSDIR
   screen ./MCServer
