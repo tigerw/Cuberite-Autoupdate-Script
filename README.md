@@ -6,7 +6,7 @@ MCServer Automatic Updating Shell Script
 **INFORMATION:** This script assumes your MCServer is in a directory named 'mcserver' and that you are currently *outside* that directory.
 
 This script works in tandem with [MCServer](http://mc-server.org/) to update the binary executable to the newest version.
-It requires Linux, and utilises the Jenkins build server hosted by [bearbin](https://github.com/bearbin/) located at http://ci.bearbin.net/
+It requires Linux, and utilises the Jenkins build server hosted by [bearbin](https://github.com/bearbin/) located at http://builds.mc-server.org
 
 Requirements
 ------------
