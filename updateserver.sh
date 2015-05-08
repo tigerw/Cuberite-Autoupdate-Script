@@ -2,13 +2,13 @@
 
 #Configuration
 ## Download locations for different architectures.
-X86LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.tar"
-X64LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.tar"
-ARMLOC="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.tar"
+X86LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.gz.tar"
+X64LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.gz.tar"
+ARMLOC="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.gz.tar"
 
-X86LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-X64LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.tar.md5"
-ARMLOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.tar.md5"
+X86LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
+X64LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
+ARMLOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
 ## MCServer Directory
 MCSDIR="mcserver/"
 ## Cache Directory
