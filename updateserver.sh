@@ -2,39 +2,39 @@
 
 #Configuration
 ## Download locations for different architectures.
-X86LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.gz.tar"
-X64LOC="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.gz.tar"
-ARMLOC="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.gz.tar"
+X86LOC="http://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz"
+X64LOC="http://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz"
+ARMLOC="http://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz"
 
-X86LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x86/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
-X64LOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20x64/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
-ARMLOCMD5="http://builds.cuberite.org/job/MCServer%20Linux%20armhf/lastSuccessfulBuild/artifact/MCServer.tar.gz.md5"
-## MCServer Directory
-MCSDIR="mcserver/"
+X86LOCSHA="http://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz.sha1"
+X64LOCSHA="http://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz.sha1"
+ARMLOCSHA="http://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/lastSuccessfulBuild/artifact/Cuberite.tar.gz.sha1"
+## Cuberite Directory
+CUBERITEDIR="cuberite/"
 ## Cache Directory
-CACHEDIR=".mcsupcache/"
+CACHEDIR=".cuberiteupdate/"
 
 # Define the download and extract function.
 download() {
   # Download the current archive.
-  echo "Downloading MCServer..."
-  wget --quiet $ARCHLOC -O $CACHEDIR"MCServer.tar"
-  # Find out the current MCServer process and kill it.
+  echo "Downloading Cuberite..."
+  wget --quiet $ARCHLOC -O $CACHEDIR"Cuberite.tar.gz"
+  # Find out the current Cuberite process and kill it.
   pid=`pgrep -o -x MCServer`
   kill -s 15 $pid 2>/dev/null
   # Extract the archive, clean up, and start the server.
   echo "Extracting downloaded archive..."
-  tar -xf $CACHEDIR"MCServer.tar"
+  tar -xf $CACHEDIR"Cuberite.tar.gz"
   echo "Copying new files..."
-  cp -r "MCServer/Plugins" $MCSDIR
-  cp -r "MCServer/webadmin" $MCSDIR
-  cp "MCServer/monsters.ini" $MCSDIR
-  cp "MCServer/items.ini" $MCSDIR
-  cp "MCServer/crafting.txt" $MCSDIR
-  cp "MCServer/furnace.txt" $MCSDIR
-  cp "MCServer/MCServer" $MCSDIR
+  cp -r "MCServer/Plugins" $CUBERITEDIR
+  cp -r "MCServer/webadmin" $CUBERITEDIR
+  cp "MCServer/monsters.ini" $CUBERITEDIR
+  cp "MCServer/items.ini" $CUBERITEDIR
+  cp "MCServer/crafting.txt" $CUBERITEDIR
+  cp "MCServer/furnace.txt" $CUBERITEDIR
+  cp "MCServer/MCServer" $CUBERITEDIR
   rm -r "MCServer"
-  cd $MCSDIR
+  cd $CUBERITEDIR
   screen ./MCServer
   # Nothing more is needed from the script, exit.
   echo "Updated successfully!"
@@ -46,25 +46,25 @@ CURRENTARCH=`uname -m`
 if [ $CURRENTARCH == "i686" ]
 then
   ARCHLOC=$X86LOC
-  ARCHLOCMD5=$X86LOCMD5
+  ARCHLOCSHA=$X86LOCSHA
 elif [ $CURRENTARCH == "x86_64" ]
 then
   ARCHLOC=$X64LOC
-  ARCHLOCMD5=$X64LOCMD5
+  ARCHLOCSHA=$X64LOCSHA
 elif [ $CURRENTARCH == "armv6l"  ]
 then
   ARCHLOC=$ARMLOC
-  ARCHLOCMD5=$ARMLOCMD5
+  ARCHLOCSHA=$ARMLOCSHA
 else
   echo "Arch not recognised. Please file a bug report with the output from uname -m and your machine type."
   exit
 fi
 
-# Make sure the specified MCServer directory exists.
-if [ ! -d $MCSDIR ]
+# Make sure the specified Cuberite directory exists.
+if [ ! -d $CUBERITEDIR ]
 then
   # Make the directory.
-  mkdir $MCSDIR
+  mkdir $CUBERITEDIR
 fi
 
 # Check if the cache directory exists.
@@ -74,16 +74,16 @@ then
   download
 fi
 
-# Donwload the MD5 sum from the buildserver and check it against the current tar.
-wget --quiet $ARCHLOCMD5 -O $CACHEDIR"MCServer.tar.md5"
+# Donwload thesha1 sum from the buildserver and check it against the current tar.
+wget --quiet $ARCHLOCSHA -O $CACHEDIR"Cuberite.tar.gz.sha1"
 cd $CACHEDIR
-md5sum -c --status "MCServer.tar.md5"
+sha1sum -c --status "Cuberite.tar.gz.sha1"
 rc=$?
 if [ $rc != 0 ]
 then
   cd ..
-  # We don't have the most updated MCServer version, update now.
+  # We don't have the most updated Cuberite version, update now.
   download
 fi
 
-echo "MCServer up to date, quitting!"
+echo "Cuberite up to date, quitting!"
