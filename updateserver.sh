@@ -20,22 +20,22 @@ download() {
   echo "Downloading Cuberite..."
   wget --quiet $ARCHLOC -O $CACHEDIR"Cuberite.tar.gz"
   # Find out the current Cuberite process and kill it.
-  pid=`pgrep -o -x MCServer`
+  pid=`pgrep -o -x Cuberite`
   kill -s 15 $pid 2>/dev/null
   # Extract the archive, clean up, and start the server.
   echo "Extracting downloaded archive..."
   tar -xf $CACHEDIR"Cuberite.tar.gz"
   echo "Copying new files..."
-  cp -r "MCServer/Plugins" $CUBERITEDIR
-  cp -r "MCServer/webadmin" $CUBERITEDIR
-  cp "MCServer/monsters.ini" $CUBERITEDIR
-  cp "MCServer/items.ini" $CUBERITEDIR
-  cp "MCServer/crafting.txt" $CUBERITEDIR
-  cp "MCServer/furnace.txt" $CUBERITEDIR
-  cp "MCServer/MCServer" $CUBERITEDIR
-  rm -r "MCServer"
+  cp -r "Cuberite/Plugins" $CUBERITEDIR
+  cp -r "Cuberite/webadmin" $CUBERITEDIR
+  cp "Cuberite/monsters.ini" $CUBERITEDIR
+  cp "Cuberite/items.ini" $CUBERITEDIR
+  cp "Cuberite/crafting.txt" $CUBERITEDIR
+  cp "Cuberite/furnace.txt" $CUBERITEDIR
+  cp "Cuberite/Cuberite" $CUBERITEDIR
+  rm -r "Cuberite"
   cd $CUBERITEDIR
-  screen ./MCServer
+  screen ./Cuberite
   # Nothing more is needed from the script, exit.
   echo "Updated successfully!"
   exit
